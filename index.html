@@ -4,115 +4,48 @@
     <meta charset="utf-8">
     <meta name="viewport" content= "width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <!--link rel="stylesheet" href="css/style.css"-->
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-        }
-
-        p, a, input, summary {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        body {
-            /* use one of these bg colour if you use bg size contain */
-            /* background colour for altbg.jpg */
-            /* background-color: #151419; */
-            /* background colour for bg.jpg*/
-            /* background-color: #000000; */
-            /* background-size: contain; */
-            background-image: url("img/altbg.jpg");
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-        }
-
-        #searchbar {
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%, 0);
-            /*top: 155px;*/
-            top: 20%;
-        }
-
-        .input_box {
-            border: 1px white;
-            border-style: none none solid none;
-            text-align: center;
-            height: 30px;
-            width: 450px;
-            padding: 0;
-            background: none;
-            font-size: 15px;
-        }
-
-        .input_box:focus {
-            outline: none;
-        }
-
-        .ge, .ch, .mi, .m {
-            position: fixed;
-            bottom: 20%;
-            display: grid;
-            padding: 4px;
-        }
-
-        .ge {
-            left: 8%;
-        }
-
-        .ch {
-            left:24%;
-        }
-
-        .mi {
-            right: 8%;
-        }
-
-        .m {
-            right: 24%;
-        }
-
-        li {
-            margin-bottom: 25px;
-            list-style: none;
-            text-align: center;
-        }
-
-        details {
-            text-align: center;
-            display: block;
-            height: auto;
-            overflow: hidden;
-            position: absolute; /* Use position absolute para não afetar a posição da div.ge */
-            top: 170px;
-        }
-
-        summary {
-            text-align: center;
-            margin-bottom: 25px;
-            text-align: center;
-            list-style: none;
-            display: block;
-            position: relative;
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-	<!-- searchbar --!>
+    <div id="frase"></div>
+
+    <script>
+        const frases = {
+            manha: [
+                "Bom dia", "Dia", "Opa", "Salve", "Good morning", "Mornin'", "Hi there",
+                "Sup", "Bonjour", "Bon matin", "Salut", "Coucou", "おはよう",
+                "おはようございます", "こんにちは"
+            ],
+            tarde: [
+                "Boa tarde", "Suave?", "Good afternoon", "Wassup", "Bonjour", "Salut",
+                "Bonne après-midi", "こんにちは"
+            ],
+            noite: [
+                "Boa noite", "Como foi o dia?", "Good night", "All chill?", "Bonsoir",
+                "Comment était ta journée ?", "Tranquille ?", "おやすみ", "おやすみなさい",
+                "今日どうだった？"
+            ]
+        };
+
+        function escolherFrase() {
+            const horaAtual = new Date().getHours();
+            const periodo = horaAtual >= 5 && horaAtual < 12 ? 'manha' :
+                             horaAtual >= 12 && horaAtual < 18 ? 'tarde' : 'noite';
+
+            const frasesPeriodo = frases[periodo];
+            const indiceAleatorio = Math.floor(Math.random() * frasesPeriodo.length);
+            return frasesPeriodo[indiceAleatorio];
+        }
+
+        document.getElementById('frase').innerText = escolherFrase();
+    </script>
+
+    <!-- searchbar -->
     <div id="searchbar">
-     <form id="textfield" action="https://searx.be/" method="get">
-     <!--<form id="textfield" action="https://www.duckduckgo.com/" method="get"> --!>
-         <!--<form id="textfield" action="https://www.google.com/" method="get">--!>
+        <!--form id="textfield" action="https://searx.be/" method="get"-->
+     <form id="textfield" action="https://www.duckduckgo.com/" method="get">
+         <!--<form id="textfield" action="https://www.google.com/" method="get">-->
       <input class="input_box" type="text" name="q" placeholder="..." autofocus>
      </form>
     </div>
@@ -120,37 +53,45 @@
 
   <!-- lists --!>
     <div class="ge">
+    <ul>
         <li><a href="https://www.wiktionary.org">Wiktionary</a></li>
         <li><a href="https://www.wikipedia.org">Wikipedia</a></li>
         <li><a href="https://www.youtube.com">YouTube</a></li>
         <li><a href="https://jisho.org">Jisho</a></li>
             <details>
                 <summary>...</summary>
+                <ul>
                     <li><a href="https://www.youtube.com">YouTube</a></li>
                     <li><a href="https://jisho.org">Jisho</a></li>
+                </ul>
             </details>
+    </ul>
     </div>
 
-
-
     <div class="ch">
+    <ul>
      <li><a href="https://www.4chan.org/wsg">/wsg/</a></li>
      <li><a href="https://www.4chan.org/wg">/wg/</a></li>
      <li><a href="https://www.4chan.org/po">/po/</a></li>
+    </ul>
     </div>
 
     <div class="mi">
+    <ul>
      <li><a href="https://www.duolingo.com">Duolingo</a></li>
      <li><a href="https://www.deepl.com">Deepl</a></li>
      <li><a href="https://monkeytype.com/">Monkey Type</a></li>
      <li><a href="https://www.khanacademy.org">Khan</a></li>
+    </ul>
     </div>
 
     <div class="m">
+    <ul>
      <li><a href="https://www.marxists.org/">Marxists</a></li>
      <li><a href="https://www.lichess.org">Lichess</a></li>
      <li><a href="https://www.github.com">GitHub</a></li>
      <li><a href="https://www.lesswrong.com">lesswrong</a></li>
+    </ul>
     </div>
 
 </body>

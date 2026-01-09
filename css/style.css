@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
@@ -16,21 +17,21 @@ body {
     /* background colour for bg.jpg*/
     /* background-color: #000000; */
     /* background-size: contain; */
+    min-height: 100vh;
     background-image: url("../img/altbg.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 100%;
-    width: 100%;
-    position: absolute;
+    overflow: hidden;
 }
 
 #searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    /*top: 155px;*/
+    width: 100%;
     top: 20%;
 }
 
@@ -82,13 +83,34 @@ details {
     text-align: center;
     display: block;
     height: auto;
-    overflow: hidden;
+    overflow: visible; /* Alterado para garantir que o conteúdo seja visível */
+    position: relative; /* Adicionado para posicionar o conteúdo interno */
 }
 
 summary {
-    margin-bottom: 25px;
+    margin-bottom: 0;
     text-align: center;
     list-style: none;
     display: block;
     position: relative;
+    cursor: pointer; /* Adicionado para indicar que é clicável */
+}
+
+details ul {
+    position: absolute; /* Posiciona o conteúdo do details fora do fluxo normal */
+    top: 100%; /* Coloca o conteúdo abaixo do summary */
+    left: 0;
+    width: 100%;
+    /*background-color: rgba(0, 0, 0, 0.8); /* Adiciona um fundo para melhor visibilidade */
+    padding: 10px; /* Adiciona algum espaço ao redor do conteúdo */
+    box-sizing: border-box;
+    z-index: 1; /* Garante que o conteúdo apareça acima de outros elementos */
+    margin-top: 10px; /* Adiciona um espaço entre o summary e o conteúdo */
+}
+
+#frase {
+    font-size: 18px;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 2%;
 }
