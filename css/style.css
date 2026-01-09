@@ -1,38 +1,60 @@
-* {
+:root {
+    --color-bg: #191919;
+    --color-fg: #EADBB2;
+    --color-link: #8F9191;
+    --color-link-visited: #8F9191;
+    --color-link-hover: #FA7921 ;
+}
+
+html, body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: "monospace";
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
-p, a, input, summary {
-    color: #ffffff;
-    text-decoration: none;
+input {
+    color: var(--color-fg);
 }
 
-body {
-    /* use one of these bg colour if you use bg size contain */
-    /* background colour for altbg.jpg */
-    /* background-color: #151419; */
-    /* background colour for bg.jpg*/
-    /* background-color: #000000; */
-    /* background-size: contain; */
-    min-height: 100vh;
-    background-image: url("../img/altbg.jpg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-}
-
-#searchbar {
-    display: flex;
-    justify-content: center;
+.container {
+    display: grid;
+    grid-template-columns: 1fr 460px 600px 1fr;
+    grid-template-areas:
+    ". left right .";
+    column-gap: 80px;
+    justify-items: center;
     align-items: center;
-    position: absolute;
+    min-height: 100%;
+}
+
+.left-container {
+    grid-area: left;
+    aspect-ratio: 1/1;
+}
+
+.right-container {
+    grid-area: right;
+    height: 50%;
     width: 100%;
-    top: 20%;
+}
+
+.mao img {
+    border: 2.5px solid #ffffff;
+    max-width: 70%;
+    max-height: 70%;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    padding-top: 60px;
+    padding-bottom: 50px;
 }
 
 .input_box {
@@ -44,73 +66,53 @@ body {
     padding: 0;
     background: none;
     font-size: 15px;
+    /*margin-bottom: 35px;*/
 }
 
 .input_box:focus {
     outline: none;
 }
 
-.ge, .ch, .mi, .m {
-    position: fixed;
-    bottom: 20%;
-    display: grid;
-    padding: 4px;
+.category {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
 }
 
-.ge {
-    left: 8%;
+.bookmarks {
+    display: flex;
+    justify-content: center;
 }
 
-.ch {
-    left:24%;
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.mi {
-    right: 8%;
-}
-
-.m {
-    right: 24%;
+.title {
+    font-size: 20px;
 }
 
 li {
-    margin-bottom: 25px;
-    list-style: none;
-    text-align: center;
+    font-size: 16px;
+    list-style-type: none;
+    padding: 5px
 }
 
-details {
-    text-align: center;
-    display: block;
-    height: auto;
-    overflow: visible; /* Alterado para garantir que o conteúdo seja visível */
-    position: relative; /* Adicionado para posicionar o conteúdo interno */
+a:link {
+    text-decoration: none;
+    color: var(--color-link);
 }
 
-summary {
-    margin-bottom: 0;
-    text-align: center;
-    list-style: none;
-    display: block;
-    position: relative;
-    cursor: pointer; /* Adicionado para indicar que é clicável */
+a:visited {
+    color: var(--color-link-visited);
 }
 
-details ul {
-    position: absolute; /* Posiciona o conteúdo do details fora do fluxo normal */
-    top: 100%; /* Coloca o conteúdo abaixo do summary */
-    left: 0;
-    width: 100%;
-    /*background-color: rgba(0, 0, 0, 0.8); /* Adiciona um fundo para melhor visibilidade */
-    padding: 10px; /* Adiciona algum espaço ao redor do conteúdo */
-    box-sizing: border-box;
-    z-index: 1; /* Garante que o conteúdo apareça acima de outros elementos */
-    margin-top: 10px; /* Adiciona um espaço entre o summary e o conteúdo */
+a:hover {
+    color: var(--color-link-hover);
 }
 
-#frase {
-    font-size: 18px;
-    text-align: center;
-    color: #ffffff;
-    margin-top: 2%;
-}
+
